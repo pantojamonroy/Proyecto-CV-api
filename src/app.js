@@ -1,7 +1,9 @@
 const express = require('express');
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const cors= require("cors");
 const app = express();
 require("dotenv").config();
+app.use(cors());
 
 //Conectarnos a Mongoose
 mongoose
@@ -18,6 +20,7 @@ const productRoutes = require('./routes/product.routes.js')
 const salesRoutes = require("./routes/sale.routes");
 
 //Configurar Rutas
+app.get("/", function (req, res) { res.send("Hello from vercel"); });
 app.use('/products', productRoutes);
 app.use("/sales", salesRoutes);
 
