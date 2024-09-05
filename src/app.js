@@ -2,8 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors= require("cors");
 const app = express();
-require("dotenv").config();
+
 app.use(cors());
+require("dotenv").config();
 
 //Conectarnos a Mongoose
 mongoose
@@ -16,13 +17,17 @@ app.use(express.urlencoded({ extended: false }));
 
 
 //Importar rutas
-const productRoutes = require('./routes/product.routes.js')
+const productRoutes = require('./routes/product.routes');
 const salesRoutes = require("./routes/sale.routes");
+const   contactRoutes = require("./routes/contact.routes");
+
+
 
 //Configurar Rutas
 app.get("/", function (req, res) { res.send("Hello from vercel"); });
 app.use('/products', productRoutes);
 app.use("/sales", salesRoutes);
+app.use("/contacts", contactRoutes);
 
 //espacio de rutas
 
