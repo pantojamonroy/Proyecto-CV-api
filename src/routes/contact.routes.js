@@ -1,7 +1,6 @@
-const   miRouter = require('express').Router();
-const   contactsFormController = require('../controllers/contactsForms.controller');
 
-miRouter.post('/guardar', contactsFormController.guardarContacto);
-miRouter.get("/listar", contactsFormController.listarContactos);
+const misRutas = require("express").Router();
 
-module.exports = miRouter;
+misRutas.post("/guardar", ContactsController.guardar());
+
+module.exports = misRutas;
